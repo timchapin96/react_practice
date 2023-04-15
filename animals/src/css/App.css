@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100svw;
+}
+.barn {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
