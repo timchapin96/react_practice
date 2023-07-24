@@ -1,43 +1,25 @@
-import { GoBell, GoCloudDownload, GoDatabase } from 'react-icons/go';
-import { DiAndroid, DiCodeigniter } from "react-icons/di";
-import Button from './Button';
+import Accordion from './components/Accordion'
 
 function App() {
-  const handleClick = () => {
-    console.log("click");
-  };
-  const handleMouseEnter = () => {
-    console.log("Get off me!");
-  };
+  const items = [
+    {
+      id: 1,
+      label: 'Can I use REact?',
+      content: 'Yes you can. Yes you can. Yes you can. Yes you can. Yes you can.'
+    },
+    {
+      id: 2,
+      label: 'Can I use Javascript?',
+      content: 'Yes you can use it on any project you want. Yes you can use it on any project you want. Yes you can use it on any project you want. Yes you can use it on any project you want. Yes you can use it on any project you want.'
+    },
+    {
+      id: 3,
+      label: 'Can I use CSS?',
+      content: 'Yes you can. Yes you can. Yes you can. Yes you can. Yes you can. Yes you can. Yes you can. Yes you can.'
+    }
+  ]
 
-  return (
-    <div className="flex">
-      <div className="flex flex-col items-center">
-        <div><Button onClick={handleClick} className="mb-5"><GoBell/>Plain</Button></div>
-        <div><Button primary> <DiAndroid/>Primary</Button></div>
-        <div><Button secondary><DiCodeigniter/>Secondary</Button></div>
-        <div><Button success>Success</Button></div>
-        <div><Button warning>Warning</Button></div>
-        <div><Button danger>Danger</Button></div>
-      </div>
-      <div className="flex flex-col items-center">
-        <div><Button rounded onMouseEnter={handleMouseEnter}>Plain</Button></div>
-        <div><Button primary rounded>Primary</Button></div>
-        <div><Button secondary rounded>Secondary</Button></div>
-        <div><Button success rounded>Success</Button></div>
-        <div><Button warning rounded>Warning</Button></div>
-        <div><Button danger rounded>Danger</Button></div>
-      </div>
-      <div className="flex flex-col items-center">
-        <div><Button rounded outline>Plain</Button></div>
-        <div><Button primary outline>Primary</Button></div>
-        <div><Button secondary outline>Secondary</Button></div>
-        <div><Button success outline>Success</Button></div>
-        <div><Button warning outline>Warning</Button></div>
-        <div><Button danger outline>Danger</Button></div>
-      </div>
-    </div>
-  )
+  return <Accordion items={items}></Accordion>
 }
 
 export default App;
