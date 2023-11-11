@@ -6,7 +6,17 @@ import BooksContext from './context/books'
 function App() {
   const { fetchBooks } = useContext(BooksContext)
   useEffect(() => {
+    const listener = () => {
+      console.log("hi");
+    };
+
+    document.body.addEventListener("click", listener);
     fetchBooks();
+
+    return () => {
+      document.body.removeEventListener("click", listener);
+    };
+
   }, []);
 
   return (
