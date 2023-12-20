@@ -1,6 +1,6 @@
 import { GoBell, GoCloudDownload, GoDatabase } from 'react-icons/go';
 import { DiAndroid, DiCodeigniter } from "react-icons/di";
-import Button from '../Button';
+import Button from '../components/Button';
 
 function ButtonPage() {
   const handleClick = () => {
