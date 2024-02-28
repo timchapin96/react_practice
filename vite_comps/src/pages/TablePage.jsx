@@ -4,10 +4,10 @@ import SortableTable from "../components/SortableTable";
 
 function TablePage() {
   const data = [
-    { name: "Orange", color: "bg-orange-500", score: 5 },
-    { name: "Eggplant", color: "bg-purple-800", score: 10 },
-    { name: "Apple", color: "bg-red-500", score: 15 },
-    { name: "Blueberry", color: "bg-blue-500", score: 20 },
+    { name: "Orange", color: "bg-orange-500", score: 10 },
+    { name: "Eggplant", color: "bg-purple-800", score: 2 },
+    { name: "Apple", color: "bg-red-500", score: 5 },
+    { name: "Blueberry", color: "bg-blue-500", score: 6 },
     { name: "Lime", color: "bg-green-300", score: 25}
   ]
 
