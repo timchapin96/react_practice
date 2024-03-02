@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import Root from './routes/root'
 import ErrorPage from './error-page'
 import BlogPage from './routes/blogPage'
+import BlogsIndex from './routes/blogsIndex'
 // import './index.css'
 import {
   createBrowserRouter,
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/blog/:blogId",
     element: <BlogPage/>,
+  },
+  {
+    path: "/blogs",
+    element: <BlogsIndex/>
   },
 ]);
 
