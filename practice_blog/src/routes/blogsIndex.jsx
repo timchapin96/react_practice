@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 function blogsPage() {
   const [blogs, setBlogs] = useState([]);
@@ -18,7 +19,7 @@ function blogsPage() {
     {/* Map over blogs array and render each blog */}
     {blogs.map(blog => (
       <div key={blog.id}>
-        <h2>{blog.title}</h2>
+        <h2><Link state={{blogPost: blog}} to = {`${blog.id}`}>{blog.title}</Link></h2>
         <p>{blog.body}</p>
         <p>{blog.timestamp}</p>
         <p>{blog.author}</p>

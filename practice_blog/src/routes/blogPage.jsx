@@ -1,16 +1,18 @@
-import {useParams, Form} from 'react-router-dom'
+import {useParams, Form, useLocation} from 'react-router-dom'
 
 export default function blogPage() {
   let {blogId} = useParams();
+  const location = useLocation();
+  const { blogPost } = location.state;
 
 
   return (
     <div>
-      <h1>{blog.title}</h1>
-      <h4>{blog.author}</h4>
-      <p>{blog.timestamp}</p>
+      <h1>{blogPost.title}</h1>
+      <h4>{blogPost.author}</h4>
+      <p>{blogPost.timestamp}</p>
       <hr/>
-      <p>{blog.body}</p>
+      <p>{blogPost.body}</p>
       <p>{blogId}</p>
 
       <div>
