@@ -48,3 +48,20 @@ app.get('/blogs', async (req, res) => {
     res.status(500).send('Error executing query');
   }
 });
+
+app.get('/blogs/:blogId', async (req, res) => {
+  try {
+    const { blogId } = req.params;
+    const result = await pool.query(`SELECT * FROM practice_blogs WHERE id=${blogId}`);
+    if (result.rows.length ==! 0) {
+      console.log(result.rows);
+      res.json(result.rows)
+    } else {
+      console.log(`Blog with ${blogId} was not found in the database`);
+      res.status(404).send('Blog not found')
+    }
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).send('Error executing query');
+  }
+})
