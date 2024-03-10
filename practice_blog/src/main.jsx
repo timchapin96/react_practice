@@ -4,6 +4,7 @@ import Root from './routes/root'
 import ErrorPage from './error-page'
 import BlogPage from './routes/blogPage'
 import BlogsIndex from './routes/blogsIndex'
+import BlogsNew from "./routes/blogNew";
 // import './index.css'
 import {
   createBrowserRouter,
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/blogs",
     element: <BlogsIndex/>
+  },
+  {
+    path: "/blogs/new",
+    element: <BlogsNew/>
   },
 ]);
 
