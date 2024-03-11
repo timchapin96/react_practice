@@ -28,7 +28,7 @@ function newBlog () {
       console.log(data);
     })
     .catch((error) => console.log(error));
-
+    redirect("/blogs");
 
   }
 
