@@ -75,7 +75,7 @@ app.post('/blogs/new', async (req, res) => {
     const {title, body, author} = req.body;
     console.log(`${title} ${body} ${author}`);
     const result = await pool.query(
-      `INSERT INTO practice_blogs (title, body, timestamp, author) VALUES('${title}', '${body}', NOW() ${author});`
+      `INSERT INTO practice_blogs (title, body, timestamp, author) VALUES('${title}', '${body}', NOW(), '${author}');`
     )
     console.log(result);
   } catch (err) {
