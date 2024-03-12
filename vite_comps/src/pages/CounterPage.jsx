@@ -1,18 +1,91 @@
-import Button from '../components/Button';
-import useNumber from '../hooks/use-counter';
+import { useReducer } from 'react'
+import Button from '../components/Button'
+import Panel from '../components/panel'
 
-function CounterPage({ initialCount }) {
+const INCREMENT_COUNT = 'increment-count'
+const DECREMENT_COUNT = 'decrement-count'
+const ADD_COUNT_CHANGE = 'add-count-change'
+const SUBMIT_COUNT = 'submit-count'
 
-  const {count, increment } = useNumber(initialCount);
+const reducer = (state, action) => {
+  switch (action.type) {
+    case INCREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count + 1
+      }
+    case DECREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count - 1
+      }
+    case ADD_COUNT_CHANGE:
+      return {
+        ...state,
+        valueToAdd: action.payload
+      }
+    case SUBMIT_COUNT:
+      return {
+        ...state,
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0
+      }
+    default:
+      throw new Error('unexpected action type: ' + action.type)
+  }
+}
+function CounterPage ({ initialCount }) {
+  const [state, dispatch] = useReducer(reducer, {
+    count: initialCount,
+    valueToAdd: 0
+  })
+
+  const increment = () => {
+    dispatch({
+      type: INCREMENT_COUNT
+    })
+  }
+  const decrement = () => {
+    dispatch({
+      type: DECREMENT_COUNT
+    })
+  }
+  const handleChange = event => {
+    const value = parseInt(event.target.value) || 0
+    dispatch({
+      type: ADD_COUNT_CHANGE,
+      payload: value
+    })
+  }
+  const handleSubmit = event => {
+    event.preventDefault()
+    dispatch({
+      type: SUBMIT_COUNT
+    })
+  }
 
   return (
     <div>
-      <h1>Count is {count}</h1>
-      <Button onClick={increment}>
-        Increment
-      </Button>
+      <Panel className='m-3'>
+        <h1 className='text-lg'>Count is {state.count}</h1>
+        <div className='flex flex-row'>
+          <Button onClick={increment}>Increment</Button>
+          <Button onClick={decrement}>Decrement</Button>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <label>Add a lot!</label>
+          <input
+            type='number'
+            value={state.valueToAdd || ''}
+            onChange={handleChange}
+            className='p-1 m-3 bg-gray-50 border border-gray-300'
+          />
+          <Button>Add it!</Button>
+        </form>
+      </Panel>
     </div>
   )
 }
 
-export default CounterPage;
+export default CounterPage
