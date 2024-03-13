@@ -19,7 +19,7 @@ app.use(express.json()) //What does this do?
 app.use(
   cors({
     // origin: 'http://example.com', // Replace with the origin(s) allowed to access the server
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Specify allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers
   })
 )
@@ -99,5 +99,20 @@ app.delete('/blogs/:blogId', async (req, res) => {
   } catch (err) {
     console.error('Could not delete blog', err)
     res.status(404).send('Blog not found')
+  }
+})
+
+app.patch('/blogs/:blogId', async (req, res) => {
+  try {
+  const { blogId } = req.params
+  const { title, body, author } = req.body
+  const result = await pool.query (
+    `UPDATE practice_blogs SET title='${title}', body='${body}', author='${author}' WHERE id='${blogId}';`
+  )
+  res.status(200).send('Blog post updated')
+  console.log(result);
+  } catch(err) {
+    console.error('Could not update blog', err);
+    res.status(500).send('Unable to update blog post')
   }
 })
