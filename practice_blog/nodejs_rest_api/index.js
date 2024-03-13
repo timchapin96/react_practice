@@ -16,7 +16,13 @@ var cors = require('cors')
 const PORT = process.env.PORT || 3000 //What?
 
 app.use(express.json()) //What does this do?
-app.use(cors())
+app.use(
+  cors({
+    // origin: 'http://example.com', // Replace with the origin(s) allowed to access the server
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers
+  })
+)
 
 pool.connect((err, client, release) => {
   if (err) {
@@ -66,20 +72,32 @@ app.get('/blogs/:blogId', async (req, res) => {
   }
 })
 
-app.get('/blogs/new/:newBlog', (req, res) => {
-
-})
+app.get('/blogs/new/:newBlog', (req, res) => {})
 
 app.post('/blogs/new', async (req, res) => {
   try {
-    const {title, body, author} = req.body;
-    console.log(`${title} ${body} ${author}`);
+    const { title, body, author } = req.body
+    console.log(`${title} ${body} ${author}`)
     const result = await pool.query(
       `INSERT INTO practice_blogs (title, body, timestamp, author) VALUES('${title}', '${body}', NOW(), '${author}');`
     )
+    console.log(result)
+  } catch (err) {
+    console.error('Could not enter blog into db', err)
+    res.status(500).send('Error executing query')
+  }
+})
+
+app.delete('/blogs/:blogId', async (req, res) => {
+  res.send('Delete request called')
+  try {
+    const { blogId } = req.params
+    const result = await pool.query(
+      `DELETE FROM practice_blogs WHERE id='${blogId}';`
+    )
     console.log(result);
   } catch (err) {
-    console.error("Could not enter blog into db", err);
-    res.status(500).send('Error executing query')
+    console.error('Could not delete blog', err)
+    res.status(404).send('Blog not found')
   }
 })
