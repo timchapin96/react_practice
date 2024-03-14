@@ -16,6 +16,7 @@ function blogsPage() {
 
   return (
     <div>
+      <Link to = {'new'}>New</Link>
     {/* Map over blogs array and render each blog */}
     {blogs.map(blog => (
       <div key={blog.id}>

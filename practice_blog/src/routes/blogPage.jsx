@@ -1,5 +1,6 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import BackButton from '../components/BackButton'
 
 export default function blogPage () {
   let { blogId } = useParams()
@@ -51,6 +52,7 @@ export default function blogPage () {
         <Link to={'edit'}>Edit</Link>
         <button onClick={handleDelete}>Delete</button>
       </div>
+      <BackButton />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { redirect } from 'react-router-dom'
 import { useState } from 'react'
+import BackButton from '../components/BackButton'
 
 function newBlog () {
   const [formData, setFormData] = useState({
@@ -61,6 +62,7 @@ function newBlog () {
         />
         <button type='submit'>Create</button>
       </form>
+      <BackButton />
     </div>
   )
 }
