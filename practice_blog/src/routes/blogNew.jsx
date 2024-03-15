@@ -1,8 +1,10 @@
-import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import BackButton from '../components/BackButton'
 
 function newBlog () {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     title: '',
     body: '',
@@ -26,9 +28,9 @@ function newBlog () {
       .then(response => response.json())
       .then(data => {
         console.log(data)
+        navigate('../blogs')
       })
       .catch(error => console.log(error))
-    redirect('/blogs')
   }
 
   return (

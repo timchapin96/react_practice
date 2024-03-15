@@ -82,6 +82,7 @@ app.post('/blogs/new', async (req, res) => {
       `INSERT INTO practice_blogs (title, body, timestamp, author) VALUES('${title}', '${body}', NOW(), '${author}');`
     )
     console.log(result)
+    res.status(200).send('Blog posted')
   } catch (err) {
     console.error('Could not enter blog into db', err)
     res.status(500).send('Error executing query')
