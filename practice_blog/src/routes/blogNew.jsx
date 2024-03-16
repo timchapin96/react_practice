@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import BackButton from '../components/BackButton'
+import RichTextEditor from '../components/RichText';
 
 function newBlog () {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function newBlog () {
   return (
     <div>
       <h1>Hi</h1>
+      <RichTextEditor />
       <form className='blogForm' onSubmit={handleSubmit}>
         <label htmlFor='title'>Blog Title</label>
         <input
