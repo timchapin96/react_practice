@@ -10,10 +10,6 @@ export default function Index() {
   const onEditorStateChange = function (editorState) {
     setEditorState(editorState);
     const { blocks } = convertToRaw(editorState.getCurrentContent());
-    /*let text = blocks.reduce((acc, item) => {
-      acc = acc + item.text;
-      return acc;
-    }, "");*/
     let text = editorState.getCurrentContent().getPlainText("\u0001");
     setText(text);
   };
