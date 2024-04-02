@@ -1,44 +1,43 @@
-import { convertToRaw, EditorState } from "draft-js";
-import { useState } from "react";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-// import draftToHtml from "draftjs-to-html";
-import { Fragment } from "react";
-export default function Index() {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [text, setText] = useState();
-  const onEditorStateChange = function (editorState) {
-    setEditorState(editorState);
-    const { blocks } = convertToRaw(editorState.getCurrentContent());
-    let text = editorState.getCurrentContent().getPlainText("\u0001");
-    setText(text);
-  };
+import { useEffect } from 'react'
+import Quill from 'quill'
+export default function Index () {
+  const options = {
+    debug: 'info',
+    modules: {
+      toolbar: [
+        [{ header: '1' }, { header: '2' }, { font: [] }],
+        [{ size: [] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [
+          { list: 'ordered' },
+          { list: 'bullet' },
+          { indent: '-1' },
+          { indent: '+1' }
+        ],
+        ['link', 'image'],
+        ['clean']
+      ],
+      imagePicker: {
+        upload: file => {
+          // Your image upload function here
+          // Should return a promise that resolves with an image URL
+        }
+      }
+    },
+    placeholder: 'Compose an epic...',
+    theme: 'snow'
+  }
+  useEffect(() => {
+    const quill = new Quill('#editor', options)
+  }, [])
 
   return (
     <>
-      {/*<div>{draftToHtml(convertToRaw(editorState.getCurrentContent()))}</div>*/}
-      {<div style={{ height: "80px", overflow: "auto" }}>{text}</div>}
-      <Editor
-        editorState={editorState}
-        toolbarClassName="toolbarClassName"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
-        onEditorStateChange={onEditorStateChange}
-        mention={{
-          separator: " ",
-          trigger: "@",
-          suggestions: [
-            { text: "APPLE", value: "apple" },
-            { text: "BANANA", value: "banana", url: "banana" },
-            { text: "CHERRY", value: "cherry", url: "cherry" },
-            { text: "DURIAN", value: "durian", url: "durian" },
-            { text: "EGGFRUIT", value: "eggfruit", url: "eggfruit" },
-            { text: "FIG", value: "fig", url: "fig" },
-            { text: "GRAPEFRUIT", value: "grapefruit", url: "grapefruit" },
-            { text: "HONEYDEW", value: "honeydew", url: "honeydew" }
-          ]
-        }}
-      />
+      <div id='editor'>
+        <span className='ql-formats'>
+          <button className='ql-image'></button>
+        </span>
+      </div>
     </>
-  );
+  )
 }

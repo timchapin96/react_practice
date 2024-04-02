@@ -38,7 +38,7 @@ function newBlog () {
     <div>
       <h1>Hi</h1>
       <RichTextEditor />
-      <form className='blogForm' onSubmit={handleSubmit}>
+      {/* <form className='blogForm' onSubmit={handleSubmit}>
         <label htmlFor='title'>Blog Title</label>
         <input
           id='title'
@@ -65,7 +65,7 @@ function newBlog () {
           onChange={handleChange}
         />
         <button type='submit'>Create</button>
-      </form>
+      </form> */}
       <BackButton />
     </div>
   )
