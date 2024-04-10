@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+
+//Create slice for Redux store
 const usersSlice = createSlice({
   name: 'users',
   initialState: {
