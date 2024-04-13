@@ -12,7 +12,6 @@ export default function blogPage () {
       .then(response => response.json())
       .then(data => {
         setBlog(data[0])
-        console.log(data[0])
       })
       .catch(error => console.log(error))
   }, [])
