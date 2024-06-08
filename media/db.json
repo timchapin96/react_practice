@@ -1,35 +1,40 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Fannie Hammes"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Archie Streich"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Elias Lueilwitz PhD"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Minnie Stroman"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Guadalupe Dooley"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Bruce Predovic"
     }
   ],
   "albums": [
     {
-      "id": 10,
+      "id": "10",
       "title": "Hiking Trip",
       "userId": 1
+    },
+    {
+      "id": "bc68",
+      "userId": "1",
+      "title": "Incredible Granite Tuna"
     }
   ],
   "phots": []
