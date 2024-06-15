@@ -27,14 +27,39 @@
   ],
   "albums": [
     {
-      "id": "10",
-      "title": "Hiking Trip",
-      "userId": 1
+      "id": "5dde",
+      "userId": "1",
+      "title": "Handmade Concrete Bike"
     },
     {
-      "id": "bc68",
+      "id": "a56c",
+      "userId": "3",
+      "title": "Luxurious Concrete Pizza"
+    },
+    {
+      "id": "0e38",
       "userId": "1",
-      "title": "Incredible Granite Tuna"
+      "title": "Intelligent Soft Table"
+    },
+    {
+      "id": "894e",
+      "userId": "1",
+      "title": "Licensed Fresh Towels"
+    },
+    {
+      "id": "25ad",
+      "userId": "1",
+      "title": "Sleek Wooden Car"
+    },
+    {
+      "id": "3ad7",
+      "userId": "1",
+      "title": "Awesome Cotton Ball"
+    },
+    {
+      "id": "703f",
+      "userId": "1",
+      "title": "Licensed Metal Car"
     }
   ],
   "phots": []
