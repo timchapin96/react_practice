@@ -27,11 +27,6 @@
   ],
   "albums": [
     {
-      "id": "5dde",
-      "userId": "1",
-      "title": "Handmade Concrete Bike"
-    },
-    {
       "id": "a56c",
       "userId": "3",
       "title": "Luxurious Concrete Pizza"
@@ -60,7 +55,31 @@
       "id": "703f",
       "userId": "1",
       "title": "Licensed Metal Car"
+    },
+    {
+      "id": "6925",
+      "userId": "1",
+      "title": "Intelligent Metal Chips"
     }
   ],
-  "phots": []
+  "photos": [
+    {
+      "id": "b448"
+    },
+    {
+      "id": "6f24",
+      "albumId": null,
+      "url": "https://loremflickr.com/150/150/abstract?lock=26161"
+    },
+    {
+      "id": "faf9",
+      "albumId": "0e38",
+      "url": "https://loremflickr.com/150/150/abstract?lock=72938"
+    },
+    {
+      "id": "6888",
+      "albumId": "0e38",
+      "url": "https://loremflickr.com/150/150/abstract?lock=46350"
+    }
+  ]
 }

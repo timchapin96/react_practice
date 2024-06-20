@@ -4,12 +4,19 @@ import { faker } from '@faker-js/faker'
 const photosApi = createApi({
   reducerPath: 'photos',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3005',
+    baseUrl: 'http://localhost:3005'
   }),
-  endpoints(builder) {
+  endpoints (builder) {
     return {
       fetchPhotos: builder.query({
-        query: (album) => {
+        providesTags: (result, error, album) => {
+          const tags = result.map(photo => {
+            return { type: 'Photo', id: photo.id }
+          })
+          tags.push({ type: 'AlbumPhoto', id: album.id })
+          return tags
+        },
+        query: album => {
           return {
             url: '/photos',
             params: {
@@ -20,26 +27,31 @@ const photosApi = createApi({
         }
       }),
       addPhoto: builder.mutation({
-        query: (album) => {
+        invalidatesTags: (result, error, album) => {
+          return [{ type: 'AlbumPhoto', id: album.id }]
+        },
+        query: album => {
           return {
             method: 'POST',
-            url: '/photo',
+            url: '/photos',
             body: {
               albumId: album.id,
               url: faker.image.abstract(150, 150, true)
             }
-
           }
         }
       }),
       removePhoto: builder.mutation({
-        query: (photo) => {
+        invalidatesTags: (result, error, photo) => {
+          return [{ type: 'Photo', id: photo.id }]
+        },
+        query: photo => {
           return {
             method: 'DELETE',
-            url: `/photos/${photo.id}`,
+            url: `/photos/${photo.id}`
           }
         }
-      }),
+      })
     }
   }
 })
